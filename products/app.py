@@ -26,3 +26,23 @@ def show_products():
     return render_template(template_path, **context)
 
 
+@products_app.route("/add_products", methods=["GET"])
+def add_products():
+    db_session.add(Product('Computer', 15, 'Xiaomi Laptop very convenient and easy to use', 'laptop.jpeg'))
+    db_session.add(Product('Mobile', 10, 'This model of Samsung Galaxy Note8 is luxurious and trendy this season', 'note8.jpeg'))
+    db_session.add(Product('Watch', 5, 'Xiaomi Laptop very convenient and easy to use', 'watch.jpg'))
+    db_session.commit()
+    return "Items added..."
+
+
+@products_app.route("/<int:product_id>", methods=["GET", "POST"])
+def show_single_product(product_id):
+    product = db_session.query(Product).get(product_id)
+    template_path = "products/product.html"
+    context = {
+        "product": product,
+        "single_product_page": True,
+    }
+    return render_template(template_path, **context)
+
+

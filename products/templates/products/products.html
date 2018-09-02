@@ -6,4 +6,23 @@
 
 
 {% block content %}
+    <div>
+       <h1>Наши популярные товары:</h1>
+    </div><!--.page-header-->
+    <div>
+        {% for product in products %}
+        <div>
+            <div>
+                <a>
+                    <img src="{{url_for('products_app.static', filename='images/'+product.img_path)}}" alt="">
+                </a>
+                <div>
+                    <h3>{{ product.title }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p><a href="{{ product.id }}">Посмотреть товар</a></p>
+                </div><!--caption-->
+            </div><!--thumbnail-->
+        </div><!--col-sm-6-->
+        {% endfor %}
+    </div><!--class="row"-->
 {% endblock %}
