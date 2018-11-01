@@ -8,21 +8,22 @@
 {% block content %}
     <div>
        <h1>Наши популярные товары:</h1>
-    </div><!--.page-header-->
+    </div>
     <div>
         {% for product in products %}
         <div>
             <div>
                 <a>
-                    <img src="{{url_for('products_app.static', filename='images/'+product.img_path)}}" alt="">
+                    <img src="{{ url_for('products_app.static', filename='images/'+product.img_path) }}" alt="">
                 </a>
                 <div>
                     <h3>{{ product.title }}</h3>
                     <p>{{ product.description }}</p>
-                    <p><a href="{{ product.id }}">Посмотреть товар</a></p>
-                </div><!--caption-->
-            </div><!--thumbnail-->
-        </div><!--col-sm-6-->
+                    <p><a href="{{ url_for('products_app.show_single_product', product_id=product.id) }}">Посмотреть товар</a></p>
+
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </div><!--class="row"-->
+    </div>
 {% endblock %}

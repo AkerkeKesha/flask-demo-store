@@ -4,11 +4,12 @@ from core.database import Base
 
 class Product(Base):
     __tablename__ = 'products'
+
     id = Column(Integer, primary_key=True)
-    title = Column(String(50))
-    price = Column(Integer)
+    title = Column(String(50), nullable=False)
+    price = Column(Integer, nullable=False)
     description = Column(String(120))
-    img_path = Column(String(120))
+    img_path = Column(String(120), nullable=False)
 
     def __init__(self, title=None, price=None, description=None, img_path=None):
         self.title = title
