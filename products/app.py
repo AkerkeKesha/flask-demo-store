@@ -38,11 +38,15 @@ def add_products():
 @products_app.route("/<int:product_id>", methods=["GET", "POST"])
 def show_single_product(product_id):
     product = db_session.query(Product).get(product_id)
-    template_path = "products/product.html"
-    context = {
-        "product": product,
-        "single_product_page": True,
-    }
-    return render_template(template_path, **context)
+    if product:
+        template_path = "products/product.html"
+        context = {
+            "product": product,
+            "single_product_page": True,
+        }
+        return render_template(template_path, **context)
+    else:
+        template_path = "404.html"
+        return render_template(template_path), 404
 
 

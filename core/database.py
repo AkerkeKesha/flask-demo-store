@@ -17,6 +17,3 @@ def init_db():
     sys.path.append("./")
     import products.models
     Base.metadata.create_all(bind=engine)
-
-
-
