@@ -6,7 +6,10 @@
 
 {% block content %}
 
-    <h1> One product page: {{ product.id }}</h1>
-    <p>{{ product.title }}</p>
+    <h2>{{ product.title }}</h2>
+    <p>{{ product.description }}</p>
+    <p>Price today: {{ product.price}}$</p>
+    <a href="{{ url_for('products_app.show_products') }}">Back</a>
+    <img src="{{ url_for('products_app.static', filename='images/'+product.img_path) }}" alt="">
 
 {% endblock %}
