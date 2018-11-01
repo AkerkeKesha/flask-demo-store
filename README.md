@@ -9,7 +9,7 @@
     $ pip3 install -r requirements.txt
 ###### To run the server 
     $ flask run
-###### To populate db with data type in your browser
-    localhost:5000/products/add_products
+##### To populate db with dummy data type in your browser
+    http://127.0.0.1:5000/products/add_products
     
 ###### Author: Akerke Kesha
